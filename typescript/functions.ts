@@ -8,3 +8,10 @@ const sub = (num1: number, num2: number): number => num1 - num2;
 const multiply = function (num1: number, num2: number): number {
   return num1 - num2;
 };
+function getItems<Type>(item: Type[]): Type[] {
+  return new Array<Type>().concat(item);
+}
+
+let concatResult = getItems<number>([1, 2, 3, 4, 5, 6]);
+
+let concatString = getItems<string>(["a", "b", "c", "d", "e"]);
