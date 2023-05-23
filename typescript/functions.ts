@@ -15,3 +15,29 @@ function getItems<Type>(item: Type[]): Type[] {
 let concatResult = getItems<number>([1, 2, 3, 4, 5, 6]);
 
 let concatString = getItems<string>(["a", "b", "c", "d", "e"]);
+
+class Employees {
+  private idPrivate: number;
+  protected lastName: string;
+  id!: number;
+  name!: string;
+  address!: string;
+
+  constructor(id: number, name: string, address: string) {
+    this.address = this.address;
+    this.id = id;
+    this.name = name;
+  }
+
+  getNameWithAddress(): string {
+    return `${this.name} stays  at ${this.address}`;
+  }
+}
+
+let john = new Employees(1, "john", "Highway 72");
+john.id = 1;
+john.name = "John";
+john.address = "Highway 71";
+let address = john.getNameWithAddress();
+
+console.log(john);
