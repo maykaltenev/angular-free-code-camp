@@ -1,1 +1,6 @@
 <app-rooms></app-rooms>
+<div [ngSwitch]="role">
+  <div *ngSwitchCase="'User'">Welcome User!</div>
+  <div *ngSwitchCase="'Admin'">Everything!</div>
+  <div *ngSwitchDefault>You are not authorized!</div>
+</div>
