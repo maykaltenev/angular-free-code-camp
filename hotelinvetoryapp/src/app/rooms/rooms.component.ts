@@ -25,6 +25,7 @@ export class RoomsComponent {
         'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
       checkinTime: new Date(),
       checkoutTime: new Date(),
+      rating: 4.5,
     },
     {
       roomNumber: 2,
@@ -35,6 +36,7 @@ export class RoomsComponent {
         'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
       checkinTime: new Date(),
       checkoutTime: new Date(),
+      rating: 4.5,
     },
     {
       roomNumber: 3,
@@ -45,6 +47,7 @@ export class RoomsComponent {
         'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
       checkinTime: new Date(),
       checkoutTime: new Date(),
+      rating: 4.5,
     },
   ];
   toggle() {
