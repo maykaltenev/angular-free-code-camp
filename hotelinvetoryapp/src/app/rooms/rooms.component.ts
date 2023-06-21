@@ -17,6 +17,7 @@ export class RoomsComponent {
     availableRooms: 120,
     bookedRooms: 5,
   };
+  title = 'roomList';
   roomList: RoomList[] = [];
   ngOnInit(): void {
     this.roomList = [
@@ -55,10 +56,28 @@ export class RoomsComponent {
       },
     ];
   }
+
+  toggle() {
+    this.hideRooms = !this.hideRooms;
+    this.title = 'Rooms List';
+  }
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
   }
-  toggle() {
-    this.hideRooms = !this.hideRooms;
+  addRoom() {
+    const room: RoomList = {
+      roomNumber: 4,
+      roomType: 'Deluxe Room',
+      amenities: 'Air Conditioner',
+      price: 500,
+      photos:
+        'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
+      checkinTime: new Date(),
+      checkoutTime: new Date(),
+      rating: 4.5,
+    };
+    // this.roomList.push(room);
+
+    this.roomList = [...this.roomList, room];
   }
 }
