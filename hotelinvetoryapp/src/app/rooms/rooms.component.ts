@@ -7,14 +7,11 @@ import { Room, RoomList } from './rooms';
   styleUrls: ['./rooms.component.css'],
 })
 export class RoomsComponent {
-  selectRoom($event: Event) {
-    throw new Error('Method not implemented.');
-  }
-
   selectedRoom!: RoomList;
   hotelName = 'My hotel';
   numberOfRooms = 10;
   hideRooms = false;
+
   rooms: Room = {
     totalRooms: 20,
     availableRooms: 120,
@@ -57,6 +54,9 @@ export class RoomsComponent {
         rating: 4.5,
       },
     ];
+  }
+  selectRoom(room: RoomList) {
+    this.selectedRoom = room;
   }
   toggle() {
     this.hideRooms = !this.hideRooms;
