@@ -5,8 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomListComponent } from './rooms/room-list/room-list.component';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
-  declarations: [AppComponent, RoomsComponent, RoomListComponent],
+  declarations: [
+    AppComponent,
+    RoomsComponent,
+    RoomListComponent,
+    HeaderComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

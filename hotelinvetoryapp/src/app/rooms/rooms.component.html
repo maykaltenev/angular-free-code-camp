@@ -1,4 +1,5 @@
 <h1>Welcome to {{ hotelName }}</h1>
+<app-header></app-header>
 <div [hidden]="hideRooms">
   Number of Rooms:
   <div [innerHTML]="numberOfRooms"></div>
@@ -12,7 +13,7 @@
 <div *ngIf="rooms?.availableRooms">
   <app-room-list
     [rooms]="roomList"
-    [title]="'title'"
+    [title]="title"
     (selectedRoom)="selectRoom($event)"
   ></app-room-list>
   <!-- {{ roomList }} -->
