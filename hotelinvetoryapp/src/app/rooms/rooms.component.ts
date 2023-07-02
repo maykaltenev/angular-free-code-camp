@@ -1,3 +1,4 @@
+import { RoomsService } from './services/rooms.service';
 import {
   Component,
   DoCheck,
@@ -6,6 +7,7 @@ import {
   AfterViewInit,
   ViewChildren,
   QueryList,
+  SkipSelf,
 } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
@@ -33,42 +35,13 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   @ViewChildren(HeaderComponent)
   headerChildrenComponent!: QueryList<HeaderComponent>;
+
+  // roomService = new RoomsService();
+
+  constructor(@SkipSelf() private roomsService: RoomsService) {}
+
   ngOnInit(): void {
-    this.roomList = [
-      {
-        roomNumber: 1,
-        roomType: 'Deluxe Room',
-        amenities: 'Air Conditioner',
-        price: 500,
-        photos:
-          'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
-        checkinTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 4.5,
-      },
-      {
-        roomNumber: 2,
-        roomType: 'Nice Room',
-        amenities: 'Air Conditioner',
-        price: 5200,
-        photos:
-          'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
-        checkinTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 4.5,
-      },
-      {
-        roomNumber: 3,
-        roomType: 'Private Room',
-        amenities: 'Air Conditioner',
-        price: 1500,
-        photos:
-          'https://tse4.mm.bing.net/th?id=OIP.t-SKlKn52jfSnq-cUiAGQgHaFy&pid=Api',
-        checkinTime: new Date(),
-        checkoutTime: new Date(),
-        rating: 4.5,
-      },
-    ];
+    this.roomList = this.roomsService.getRooms();
   }
   ngDoCheck(): void {
     console.log('on changes is called');
