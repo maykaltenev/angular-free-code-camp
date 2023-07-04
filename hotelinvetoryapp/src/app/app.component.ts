@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   @ViewChild('name', { static: true }) name!: ElementRef;
   constructor(
     @Optional() private loggerService: LoggerService,
-    @Inject(localStorageToken) private localStorage: Storage
+    @Inject(localStorageToken) private localStorage: any
   ) {}
   ngOnInit(): void {
     this.name.nativeElement.innerText = 'Hilton Hotels';

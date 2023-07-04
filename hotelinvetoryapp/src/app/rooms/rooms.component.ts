@@ -41,7 +41,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    this.roomList = this.roomsService.getRooms();
+    this.roomsService.getRooms().subscribe((rooms: RoomList[]) => {
+      this.roomList = rooms;
+    });
   }
   ngDoCheck(): void {
     console.log('on changes is called');
