@@ -1,4 +1,5 @@
 import { RoomsService } from './services/rooms.service';
+
 import {
   Component,
   DoCheck,
@@ -11,6 +12,7 @@ import {
 } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rooms',
@@ -30,6 +32,13 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   };
   title = 'roomList';
   roomList: RoomList[] = [];
+
+  stream = new Observable<string>((observer) => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+  });
   @ViewChild(HeaderComponent)
   headerComponent!: HeaderComponent;
 
@@ -41,6 +50,13 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
+    console.log(this.roomsService.getRooms());
+    this.stream.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('complete'),
+      error: (err) => console.log(err),
+    });
+    this.stream.subscribe((data) => console.log(data));
     this.roomsService.getRooms().subscribe((rooms: RoomList[]) => {
       this.roomList = rooms;
     });
@@ -63,7 +79,6 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   }
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
       roomType: 'Deluxe Room',
       amenities: 'Air Conditioner',
       price: 500,
@@ -72,9 +87,14 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
       checkinTime: new Date(),
       checkoutTime: new Date(),
       rating: 4.5,
+      roomNumber: '0',
     };
-    // this.roomList.push(room);
 
+    this.roomsService.addRoom(room).subscribe((data: RoomList[]) => {
+      this.roomList = data;
+    });
     this.roomList = [...this.roomList, room];
   }
+
+  editRoom(room: RoomList) {}
 }
